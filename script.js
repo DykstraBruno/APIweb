@@ -4,11 +4,11 @@ document.getElementById('cep').addEventListener('blur', function(evento)=> {
     const cepInformado = elemento.value;
 
 //validar o CEP
-if (!(cepInformado.lenght ===8))
-    return;
+    if(!(cepInformado.lenght ===8))
+        return;
 
 //Fazer busca no viaCEP
-
+//Promessa de que o Fetch vai buscar esse recurso
 fetch('https:viacep.com.br/ws/${cepinformado}/json')
     .then(response => resnpose.json())
     .then(data => {
@@ -25,9 +25,4 @@ fetch('https:viacep.com.br/ws/${cepinformado}/json')
     })
     .catch(error => console.error("Erro ao buscar o CEP> " , error));
 
-    )
-
-}
-//Fazer busca no VIACEP
-
-//Preencher os campos de endereço com os dados retornados
+ })
