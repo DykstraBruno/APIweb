@@ -1,16 +1,16 @@
 //Ouvir o evento de quando o usuario sair do campo de CEP
-document.getElementById('cep').addEventListener('blur', function(evento)=> {
+document.getElementById("cep").addEventListener("blur", (evento)=> {
     const elemento = evento.target;
     const cepInformado = elemento.value;
 
 //validar o CEP
-    if(!(cepInformado.lenght ===8))
+    if(!(cepInformado.length ===8))
         return;
 
 //Fazer busca no viaCEP
 //Promessa de que o Fetch vai buscar esse recurso
-fetch('https:viacep.com.br/ws/${cepinformado}/json')
-    .then(response => resnpose.json())
+fetch(`https://viacep.com.br/ws/${cepInformado}/json`)
+    .then(response => response.json())
     .then(data => {
         //processamento da página
     if(!data.error){
@@ -20,7 +20,7 @@ fetch('https:viacep.com.br/ws/${cepinformado}/json')
         document.getElementById('estado').value = data.uf;
 
     }else{
-        alert("CEP não encontrado")
+        alert("CEP não encontrado.")
     }
     })
     .catch(error => console.error("Erro ao buscar o CEP> " , error));
